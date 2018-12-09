@@ -7,7 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         x:Name="me"
-        Title="Battle Tracker d20" Height="{Binding Source={x:Static p:Settings.Default}, Path=LastHeight, Mode=TwoWay}" Width="{Binding Source={x:Static p:Settings.Default}, Path=LastWidth, Mode=TwoWay}" MinHeight="240" MinWidth="240">
+        Title="Battle Tracker d20" Height="{Binding Source={x:Static p:Settings.Default}, Path=LastHeight, Mode=TwoWay}" Width="{Binding Source={x:Static p:Settings.Default}, Path=LastWidth, Mode=TwoWay}" MinHeight="240" MinWidth="240" PreviewKeyUp="OnInsertKeyUp">
     <DockPanel LastChildFill="True" x:Name="layoutRoot" MouseLeftButtonUp="OnMouseLeftButtonUp" MouseMove="OnMouseMove">
         <Menu x:Name="Menu" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" DockPanel.Dock="Top" MinHeight="18">
             <MenuItem x:Name="MnuFile" Header="_File" Height="Auto" Width="Auto">
@@ -74,14 +74,15 @@
             CanUserSortColumns="False"
             CanUserResizeRows="False"
             CanUserAddRows="True"
-            CanUserDeleteRows="True"
-            CanUserReorderColumns="True"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
             IsReadOnly="False"
             FontFamily="Arial"
             FontSize="12"
             BeginningEdit="OnBeginEdit"
             CellEditEnding="OnEndEdit"
-            PreviewMouseLeftButtonDown="OnMouseLeftButtonDown" PreviewKeyUp="CombatantsGrid_PreviewKeyUp">
+            PreviewMouseLeftButtonDown="OnMouseLeftButtonDown"
+            PreviewKeyDown="OnCombatantGridKeyDown">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CombatantName}" IsReadOnly="False" FontFamily="Arial" FontSize="12" CanUserReorder="True"/>
                     <DataGridTextColumn Header="Init." Width="65" Binding="{Binding Initiative}" IsReadOnly="False" FontFamily="Arial" FontSize="12" CanUserReorder="True"/>

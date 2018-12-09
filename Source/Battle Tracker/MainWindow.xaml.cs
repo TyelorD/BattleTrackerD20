@@ -12,8 +12,9 @@ using System.Windows.Media;
 using Hardcodet.Wpf.Util;
 using System.Xml.Serialization;
 using System.IO;
-using WinForms = System.Windows.Forms;
-using Xceed.Wpf.Toolkit;
+using wforms = System.Windows.Forms;
+using xwpf = Xceed.Wpf.Toolkit;
+using System.Windows.Controls.Primitives;
 
 namespace Battle_Tracker
 {
@@ -61,6 +62,8 @@ namespace Battle_Tracker
 
         #endregion
 
+        #region Constructors
+
         public MainWindow()
         {
             InitializeComponent();
@@ -76,6 +79,8 @@ namespace Battle_Tracker
             CombatantsGrid.Columns[2].Width = Properties.Settings.Default.ColModWidth;
             CombatantsGrid.Columns[3].Width = Properties.Settings.Default.ColHPWidth;
         }
+
+        #endregion
 
         #region GUI Event Handlers
 
@@ -234,11 +239,11 @@ namespace Battle_Tracker
         {
             if (string.IsNullOrEmpty(filename))
             {
-                using (var dialog = new WinForms.SaveFileDialog())
+                using (var dialog = new wforms.SaveFileDialog())
                 {
                     dialog.Filter = FILE_DIALOG_FILTER;
 
-                    if (dialog.ShowDialog() == WinForms.DialogResult.OK)
+                    if (dialog.ShowDialog() == wforms.DialogResult.OK)
                         SaveBattle(dialog.FileName);
                 }
             }
@@ -268,11 +273,11 @@ namespace Battle_Tracker
         {
             if (string.IsNullOrEmpty(filename))
             {
-                using (var dialog = new WinForms.OpenFileDialog())
+                using (var dialog = new wforms.OpenFileDialog())
                 {
                     dialog.Filter = FILE_DIALOG_FILTER;
 
-                    if (dialog.ShowDialog() == WinForms.DialogResult.OK)
+                    if (dialog.ShowDialog() == wforms.DialogResult.OK)
                         LoadBattle(dialog.FileName);
                 }
             }
@@ -415,13 +420,13 @@ namespace Battle_Tracker
             if (targetItem == null || !ReferenceEquals(DraggedItem, targetItem))
             {
                 //get target index
-                var targetIndex = CombatantList.IndexOf(targetItem);
+                int targetIndex = CombatantList.IndexOf(targetItem);
 
                 //remove the source from the list
                 CombatantList.Remove(DraggedItem);
 
                 //move source at the target's location
-                CombatantList.Insert(targetIndex - 1, DraggedItem);
+                CombatantList.Insert(Math.Max(targetIndex - 1, 0), DraggedItem);
 
                 //select the dropped item
                 //CombatantsGrid.SelectedItem = DraggedItem;
@@ -434,6 +439,8 @@ namespace Battle_Tracker
                 }
                 else if (CombatantList.CurrentTurn > targetIndex)
                     CombatantList.CurrentTurn++;
+
+                SelectRowByIndex(CombatantsGrid, Math.Max(targetIndex - 1, 0));
                 //currentTurn = targetIndex;
                 //nextTurn = (currentTurn + 1) % CombatantList.Count;
             }
@@ -482,30 +489,186 @@ namespace Battle_Tracker
             //make sure the row under the grid is being selected
             Point position = e.GetPosition(CombatantsGrid);
             var row = UIHelpers.TryFindFromPoint<DataGridRow>(CombatantsGrid, position);
-            if (row != null) CombatantsGrid.SelectedItem = row.Item;
+            if (row != null)
+            {
+                //CombatantsGrid.SelectedItem = row.Item;
+
+                SelectRowByIndex(CombatantsGrid, Math.Max(row.GetIndex(), 0));
+            }
         }
 
         #endregion
 
-        #region Duplicate Entry
+        #region Duplicate/Delete Entry
 
-        private void CombatantsGrid_PreviewKeyUp(object sender, KeyEventArgs e)
+        private void OnCombatantGridKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Insert && !IsEditing && CombatantsGrid.SelectedItem != null)
+            if (!IsEditing && CombatantsGrid.SelectedItem is CombatantData)
             {
-                CombatantData dupeData = (CombatantData) CombatantsGrid.SelectedItem;
-                int idx = CombatantList.IndexOf(dupeData) + 1;
-                string name = dupeData.CombatantName;
+                if ((e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl)) && (e.Key == Key.D || e.Key == Key.C))
+                {
+                    CombatantData dupeData = (CombatantData)CombatantsGrid.SelectedItem;
+                    int idx = CombatantList.IndexOf(dupeData) + 1;
+                    string name = dupeData.CombatantName;
 
-                string[] tok = name.Split(' ');
+                    string[] tok = name.Split(' ');
 
-                if (tok.Length > 1 && int.TryParse(tok[1], out int count))
-                    CombatantList.Insert(idx, new CombatantData { CombatantName = tok[0] + " " + (count + 1), HitPoints = dupeData.HitPoints, Initiative = dupeData.Initiative, InitModifier = dupeData.InitModifier, Notes = dupeData.Notes });
-                else
-                    CombatantList.Insert(idx, new CombatantData { CombatantName = dupeData.CombatantName, HitPoints = dupeData.HitPoints, Initiative = dupeData.Initiative, InitModifier = dupeData.InitModifier, Notes = dupeData.Notes });
+                    if (tok.Length > 1 && int.TryParse(tok[1], out int count))
+                        CombatantList.Insert(idx, new CombatantData { CombatantName = tok[0] + " " + (count + 1), HitPoints = dupeData.HitPoints, Initiative = dupeData.Initiative, InitModifier = dupeData.InitModifier, Notes = dupeData.Notes });
+                    else
+                        CombatantList.Insert(idx, new CombatantData { CombatantName = dupeData.CombatantName, HitPoints = dupeData.HitPoints, Initiative = dupeData.Initiative, InitModifier = dupeData.InitModifier, Notes = dupeData.Notes });
 
-                CombatantsGrid.SelectedIndex = idx;
+                    //CombatantsGrid.SelectedIndex = idx;
+                    //CombatantsGrid.SelectedItem = CombatantList[idx];
+                    SelectRowByIndex(CombatantsGrid, idx);
+                }
+                else if (e.Key == Key.Delete || e.Key == Key.Back)
+                {
+                    DeleteEntry((CombatantData)CombatantsGrid.SelectedItem);
+                }
             }
+        }
+
+        #endregion
+
+        #region Insert Entry
+
+        private void OnInsertKeyUp(object sender, KeyEventArgs e)
+        {
+            if (!IsEditing)
+            {
+                if (((e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl)) && e.Key == Key.A) || e.Key == Key.Insert)
+                {
+                    if (CombatantsGrid.SelectedItem is CombatantData)
+                    {
+                        int idx = CombatantList.IndexOf((CombatantData)CombatantsGrid.SelectedItem) + 1;
+
+                        CombatantList.Insert(idx, new CombatantData { CombatantName = "Combatant " + (CombatantList.Count + 1) });
+
+                        SelectRowByIndex(CombatantsGrid, idx);
+                    }
+                    else
+                    {
+                        CombatantList.Add(new CombatantData { CombatantName = "Combatant " + (CombatantList.Count + 1) });
+
+                        SelectRowByIndex(CombatantsGrid, CombatantList.Count - 1);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Delete Entry
+
+        private void OnDeleteKeyDown(object sender, KeyEventArgs e)
+        {
+            if(!IsEditing && CombatantsGrid.SelectedItem is CombatantData)
+            {
+                if (e.Key == Key.Delete || e.Key == Key.Back)
+                {
+                    DeleteEntry((CombatantData)CombatantsGrid.SelectedItem);
+                }
+            }
+        }
+
+        private void DeleteEntry(CombatantData toDelete)
+        {
+            int idx = CombatantList.IndexOf(toDelete);
+
+            CombatantList.Remove(toDelete);
+
+            if(idx >= CombatantList.Count)
+            {
+                SelectRowByIndex(CombatantsGrid, CombatantList.Count - 1);
+            }
+            else
+            {
+                SelectRowByIndex(CombatantsGrid, idx);
+            }
+        }
+
+        #endregion
+
+        #region Entry Index Helpers
+
+        // Code written by Magnus at https://social.technet.microsoft.com/wiki/contents/articles/21202.wpf-programmatically-selecting-and-focusing-a-row-or-cell-in-a-datagrid.aspx?Redirected=true
+
+        public static void SelectRowByIndex(DataGrid dataGrid, int rowIndex)
+        {
+            if (!dataGrid.SelectionUnit.Equals(DataGridSelectionUnit.FullRow))
+                throw new ArgumentException("The SelectionUnit of the DataGrid must be set to FullRow.");
+
+            if (rowIndex < 0 || rowIndex > (dataGrid.Items.Count - 1))
+                throw new ArgumentException(string.Format("{0} is an invalid row index.", rowIndex));
+
+            if(dataGrid.SelectionMode == DataGridSelectionMode.Extended)
+                dataGrid.SelectedItems.Clear();
+            /* set the SelectedItem property */
+            object item = dataGrid.Items[rowIndex]; // = Product X
+            dataGrid.SelectedItem = item;
+
+            DataGridRow row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+            if (row == null)
+            {
+                /* bring the data item (Product object) into view
+                 * in case it has been virtualized away */
+                dataGrid.ScrollIntoView(item);
+                row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+            }
+
+            if (row != null)
+            {
+                DataGridCell cell = GetCell(dataGrid, row, 0);
+                if (cell != null)
+                    cell.Focus();
+            }
+        }
+
+        public static DataGridCell GetCell(DataGrid dataGrid, DataGridRow rowContainer, int column)
+        {
+            if (rowContainer != null)
+            {
+                DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(rowContainer);
+                if (presenter == null)
+                {
+                    /* if the row has been virtualized away, call its ApplyTemplate() method
+                     * to build its visual tree in order for the DataGridCellsPresenter
+                     * and the DataGridCells to be created */
+                    rowContainer.ApplyTemplate();
+                    presenter = FindVisualChild<DataGridCellsPresenter>(rowContainer);
+                }
+                if (presenter != null)
+                {
+                    DataGridCell cell = presenter.ItemContainerGenerator.ContainerFromIndex(column) as DataGridCell;
+                    if (cell == null)
+                    {
+                        /* bring the column into view
+                         * in case it has been virtualized away */
+                        dataGrid.ScrollIntoView(rowContainer, dataGrid.Columns[column]);
+                        cell = presenter.ItemContainerGenerator.ContainerFromIndex(column) as DataGridCell;
+                    }
+                    return cell;
+                }
+            }
+            return null;
+        }
+
+        public static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                    return (T)child;
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
         }
 
         #endregion
@@ -520,9 +683,13 @@ namespace Battle_Tracker
 
         private int currentTurn = 0;
         
+        [XmlAttribute("CurrentTurn")]
         public int CurrentTurn
         {
-            get { return currentTurn; }
+            get
+            {
+                return currentTurn;
+            }
             set
             {
                 currentTurn = value;
@@ -563,9 +730,13 @@ namespace Battle_Tracker
 
         private int turnCount = 1;
 
+        [XmlAttribute("CurrentRound")]
         public int TurnCount
         {
-            get { return turnCount; }
+            get
+            {
+                return turnCount;
+            }
             set
             {
                 turnCount = value;
