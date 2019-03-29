@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<ArrayOfCombatantData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CombatantData>
+    <CombatantName>Barbarian</CombatantName>
+    <Initiative>13</Initiative>
+    <InitModifier>5</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Rogue</CombatantName>
+    <Initiative>18</Initiative>
+    <InitModifier>6</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes>Cursed with lycanthropy</Notes>
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Wizard</CombatantName>
+    <Initiative>18</Initiative>
+    <InitModifier>8</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Oracle</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>1</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist 1</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>3</InitModifier>
+    <HitPoints>34</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist 2</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>3</InitModifier>
+    <HitPoints>34</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist 3</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>3</InitModifier>
+    <HitPoints>34</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist 4</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>3</InitModifier>
+    <HitPoints>34</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist 5</CombatantName>
+    <Initiative>9</Initiative>
+    <InitModifier>3</InitModifier>
+    <HitPoints>34</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Cultist Leader</CombatantName>
+    <Initiative>22</Initiative>
+    <InitModifier>2</InitModifier>
+    <HitPoints>76</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Daemon</CombatantName>
+    <Initiative>13</Initiative>
+    <InitModifier>5</InitModifier>
+    <HitPoints>46</HitPoints>
+    <Notes>Planar Ally of Cultist Leader</Notes>
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Current Turn</CombatantName>
+    <Initiative>0</Initiative>
+    <InitModifier>0</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes />
+  </CombatantData>
+  <CombatantData>
+    <CombatantName>Turn Count</CombatantName>
+    <Initiative>1</Initiative>
+    <InitModifier>0</InitModifier>
+    <HitPoints>0</HitPoints>
+    <Notes />
+  </CombatantData>
+</ArrayOfCombatantData>

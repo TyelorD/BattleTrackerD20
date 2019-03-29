@@ -84,6 +84,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="UIHelpers.cs" />
+    <Compile Include="WeatherCalendar\Extensions\Extensions.cs" />
+    <Compile Include="WeatherCalendar\WeatherNotesWindow.xaml.cs">
+      <DependentUpon>WeatherNotesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherCalendar\Weather\Data\DayData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\DescriptionData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\FogData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\HolidayData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\PrecipitationData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\WeatherData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\WeatherNoteCalendarData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Data\WindData.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\Dice.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\FogVariation.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\PrecipVariation.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\TemperatureVariation.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\TimedChance.cs" />
+    <Compile Include="WeatherCalendar\Weather\Variation\WindVariation.cs" />
+    <Compile Include="WeatherCalendar\Weather\WeatherGenerator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WeatherCalendar\WeatherNotesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

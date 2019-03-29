@@ -15,6 +15,8 @@ using System.IO;
 using wforms = System.Windows.Forms;
 using xwpf = Xceed.Wpf.Toolkit;
 using System.Windows.Controls.Primitives;
+using Weather_Calendar;
+using Weather_Calendar.Extensions;
 
 namespace Battle_Tracker
 {
@@ -59,6 +61,7 @@ namespace Battle_Tracker
         public CombatantCollection CombatantList { get; set; } = new CombatantCollection();
         public DispatcherTimer turnTimer { get; private set; } = new DispatcherTimer();
         private int TurnLength { get; set; }
+        private WeatherNotesWindow notesWindow;
 
         #endregion
 
@@ -97,6 +100,40 @@ namespace Battle_Tracker
         private void MnuFileExit_Click(object sender, RoutedEventArgs e)
         {
             OnApplicationExit();
+        }
+
+        private void MnuWeatherNotes_Click(object sender, RoutedEventArgs e)
+        {
+            if(notesWindow == null)
+            {
+                notesWindow = new WeatherNotesWindow();
+            }
+
+            notesWindow.Closed += NotesWindow_Closed;
+
+            //notesWindow.Show();
+
+            if(notesWindow.IsVisible)
+            {
+                WindowState state = notesWindow.WindowState;
+                if(state == WindowState.Normal || state == WindowState.Maximized)
+                {
+                    notesWindow.WindowState = WindowState.Minimized;
+                }
+                else if(state == WindowState.Minimized)
+                {
+                    notesWindow.WindowState = WindowState.Normal;
+                }
+            }
+            else
+            {
+                notesWindow.Show();
+            }
+        }
+
+        private void NotesWindow_Closed(object sender, EventArgs e)
+        {
+            notesWindow = null;
         }
 
         private void BtnSort_Click(object sender, RoutedEventArgs e)
@@ -328,6 +365,11 @@ namespace Battle_Tracker
 
         private void OnApplicationExit()
         {
+            if(notesWindow != null)
+            {
+                notesWindow.Save();
+            }
+
             SaveBattle(LAST_BATTLE_FILENAME);
 
             Properties.Settings.Default.ColNameWidth = CombatantsGrid.Columns[0].Width.Value;
@@ -672,6 +714,7 @@ namespace Battle_Tracker
         }
 
         #endregion
+        
     }
 
     [Serializable]

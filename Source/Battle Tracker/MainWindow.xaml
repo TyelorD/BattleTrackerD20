@@ -16,6 +16,7 @@
                 <Separator HorizontalAlignment="Left" Height="12" Width="173"/>
                 <MenuItem x:Name="MnuFileExit" Header="_Exit" Height="19" Width="Auto" Click="MnuFileExit_Click"/>
             </MenuItem>
+            <MenuItem x:Name="MnuWeatherNote" Header="_Weather/Note Calendar..." Height="19" Width="Auto" Click="MnuWeatherNotes_Click"/>
         </Menu>
         <Grid DockPanel.Dock="Bottom" Height="32">
             <Grid.ColumnDefinitions>
