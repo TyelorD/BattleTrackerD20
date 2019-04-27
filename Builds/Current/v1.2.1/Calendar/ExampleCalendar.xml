@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<CalendarData Date="2/24/4710 12:00:00 AM">
+  <DayData Date="2/24/4710 12:00:00 AM" Notes="Day of the signing..." Generated="True">
+    <Weather Temperature="50">
+      <Precipitation Level="Drizzle" Duration="13" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="Light" Duration="4" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="2/25/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="45">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="Light" Duration="3" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="2/26/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="32.5">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="Heavy" Duration="1" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="2/27/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="46.66">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="NW" Speed="7" />
+    </Weather>
+  </DayData>
+  <DayData Date="2/28/4710 12:00:00 AM" Notes="Bandits arrive at Oleg's around noon due to the fog from 3am-8am." Generated="True">
+    <Weather Temperature="48.33">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="Medium" />
+      <FogMorning Level="Medium" Duration="5" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/1/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="46.37">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="Light" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Strong" Direction="W" Speed="23" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/2/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="58.19">
+      <Precipitation Level="Drizzle" Duration="15" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Moderate" Direction="SW" Speed="18" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/3/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="64.76">
+      <Precipitation Level="Light" Duration="14" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="N" Speed="1" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/4/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="50.76">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NW" Speed="3" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/5/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="45.82">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="SW" Speed="5" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/6/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="47.02">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="N" Speed="7" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/7/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="53.41">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="Light" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="W" Speed="1" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/8/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="45.2">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="Light" Duration="1" />
+      <FogEvening Level="Heavy" Duration="1" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/9/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="40.66">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="Medium" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="N" Speed="3" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/10/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="35.46">
+      <Precipitation Level="Light" Duration="24" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Moderate" Direction="W" Speed="16" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/11/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="30.62">
+      <Precipitation Level="Drizzle" Duration="24" SnowAccumulation="0" CloudCover="Light" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="E" Speed="4" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/12/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="19.75">
+      <Precipitation Level="Light" Duration="24" SnowAccumulation="4" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Moderate" Direction="E" Speed="18" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/13/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="22.63">
+      <Precipitation Level="Light" Duration="4" SnowAccumulation="4" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="NW" Speed="9" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/14/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="39.81">
+      <Precipitation Level="Light" Duration="3" SnowAccumulation="2.01" CloudCover="Heavy" />
+      <FogMorning Level="Light" Duration="7" />
+      <FogEvening Level="Medium" Duration="7" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/15/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="49.69">
+      <Precipitation Level="Drizzle" Duration="12" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="SW" Speed="2" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/16/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="58.58">
+      <Precipitation Level="Medium" Duration="13" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="N" Speed="8" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/17/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="64.29">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="Medium" Duration="2" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/18/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="66.65">
+      <Precipitation Level="Light" Duration="16" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="Medium" Duration="6" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/19/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="64.82">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="Heavy" Duration="11" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/20/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="69.13">
+      <Precipitation Level="Light" Duration="13" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="W" Speed="1" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/21/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="65.44">
+      <Precipitation Level="Light" Duration="4" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="2" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/22/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="63.96">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Light" Direction="SE" Speed="8" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/23/4710 12:00:00 AM" Generated="True">
+    <Weather Temperature="61.48">
+      <Precipitation Level="Drizzle" Duration="8" SnowAccumulation="0" CloudCover="Heavy" />
+      <FogMorning Level="Medium" Duration="6" />
+      <FogEvening Level="Heavy" Duration="2" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/24/4710 12:00:00 AM" Generated="False">
+    <Weather Temperature="16">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/25/4710 12:00:00 AM" Generated="False">
+    <Weather Temperature="9">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+  <DayData Date="3/26/4710 12:00:00 AM" Generated="False">
+    <Weather Temperature="2">
+      <Precipitation Level="None" Duration="0" SnowAccumulation="0" CloudCover="None" />
+      <FogMorning Level="None" Duration="0" />
+      <FogEvening Level="None" Duration="0" />
+      <Wind Level="Calm" Direction="NE" Speed="0" />
+    </Weather>
+  </DayData>
+</CalendarData>

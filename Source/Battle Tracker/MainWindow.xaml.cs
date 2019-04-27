@@ -59,7 +59,7 @@ namespace Battle_Tracker
         #endregion
 
         public CombatantCollection CombatantList { get; set; } = new CombatantCollection();
-        public DispatcherTimer turnTimer { get; private set; } = new DispatcherTimer();
+        public DispatcherTimer turnTimer { get; private set; } = new DispatcherTimer { Tag = null };
         private int TurnLength { get; set; }
         private WeatherNotesWindow notesWindow;
 
@@ -194,14 +194,16 @@ namespace Battle_Tracker
             {
                 HighlightGrid();
 
-                if (turnTimer.IsEnabled)
+                if (turnTimer.Tag != null && turnTimer.Tag.ToString() == CombatantList.CurrentCombatantName/*turnTimer.IsEnabled*/)
                 {
                     turnTimer.Stop();
 
                     IterateTurn();
                 }
                 else
+                {
                     Countdown(cur => SetTurnText(time: cur), () => IterateTurn());
+                }
             }
         }
 
@@ -218,10 +220,14 @@ namespace Battle_Tracker
 
         private void SetTurnText(string combatantName = null, int time = 0)
         {
-            if(string.IsNullOrEmpty(combatantName))
+            if (string.IsNullOrEmpty(combatantName))
+            {
                 TbTimer.Text = CombatantList.CurrentCombatantName + "'s Turn: " + time.ToString();
+            }
             else
-            TbTimer.Text = combatantName + "'s Turn: " + time.ToString();
+            {
+                TbTimer.Text = combatantName + "'s Turn: " + time.ToString();
+            }
         }
 
         #endregion
@@ -231,25 +237,28 @@ namespace Battle_Tracker
         public void ToggleTimer()
         {
             if (turnTimer.IsEnabled)
+            {
                 turnTimer.Stop();
-            else
+            }
+            else if(turnTimer.Tag != null)
+            {
                 turnTimer.Start();
+            }
         }
 
         private void Countdown(Action<int> ts, Action fin)
         {
-            //var dt = new System.Windows.Threading.DispatcherTimer();
             if (turnTimer.IsEnabled)
             {
                 turnTimer.Stop();
 
                 fin();
             }
-            //turnTimer.Interval = interval;
 
             turnTimer = new DispatcherTimer
             {
-                Interval = new TimeSpan(0, 0, 1)
+                Interval = new TimeSpan(0, 0, 1),
+                Tag = CombatantList.CurrentCombatantName
             };
 
             int count = TurnLength;
@@ -262,8 +271,11 @@ namespace Battle_Tracker
                     fin();
                 }
                 else
+                {
                     ts(count);
+                }
             };
+
             ts(count);
             turnTimer.Start();
         }
@@ -620,7 +632,7 @@ namespace Battle_Tracker
 
             CombatantList.Remove(toDelete);
 
-            if(idx >= CombatantList.Count)
+            if(idx >= CombatantList.Count && CombatantList.Count > 0)
             {
                 SelectRowByIndex(CombatantsGrid, CombatantList.Count - 1);
             }
